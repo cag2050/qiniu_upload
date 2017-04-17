@@ -3,7 +3,7 @@
 > A Vue.js project
 
 需要修改的地方：    
-1. 项目目录下 create_uptoken.js 文件。  
+1. 项目目录下 create_uptoken.js 文件。    
 要修改：qiniu.conf.ACCESS_KEY、qiniu.conf.SECRET_KEY、bucket。  
 2. src/components/Upload.vue 文件。  
 要修改 var uploader = Qiniu.uploader({ 里的：  
