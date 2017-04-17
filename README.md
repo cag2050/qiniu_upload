@@ -7,7 +7,7 @@
 要修改：qiniu.conf.ACCESS_KEY、qiniu.conf.SECRET_KEY、bucket。  
 2. src/components/Upload.vue 文件。  
 要修改 var uploader = Qiniu.uploader({ 里的：  
-uptoken（运行 create_uptoken.js，打印出的字符串）、bucket_name、domain。  
+uptoken（运行 create_uptoken.js，打印出的字符串。如果提示过期，重新获取并更改）、bucket_name、domain。  
 
 ## Build Setup
 
