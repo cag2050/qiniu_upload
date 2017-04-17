@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+// require("qiniu-js/dist/qiniu.js");
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
