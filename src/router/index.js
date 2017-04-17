@@ -7,15 +7,16 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+      {
+          path: '/',
+          name: 'Upload',
+          component: Upload
+      },
     {
-      path: '/',
+      path: '/hello',
       name: 'Hello',
       component: Hello
     },
-      {
-          path: '/upload',
-          name: 'Upload',
-          component: Upload
-      }
+
   ]
 })
