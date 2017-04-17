@@ -3,7 +3,7 @@
     <img src="./assets/logo.png"><br/>
     路由列表：<br/>
     <router-link to='/'>home</router-link><br/>
-    <router-link to='/upload'>upload</router-link><br/>
+    <router-link to='/upload'>七牛文件上传upload</router-link><br/>
     <router-view></router-view>
   </div>
 </template>
