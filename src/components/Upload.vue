@@ -20,7 +20,7 @@ export default {
         var uploader = Qiniu.uploader({
             runtimes: 'html5,flash,html4',      // 上传模式，依次退化
             browse_button: 'pickfiles',         // 上传选择的点选按钮，必需
-            uptoken: 'iUTbwTRLotclpFa8kHoeSUvgxgvH1WL2-ROdbY7B:sCsqHqRTmp9ucCl92U9Y96XflV0=:eyJzY29wZSI6InRlc3R2aWRlbzIiLCJkZWFkbGluZSI6MTQ5MjQzMTYxOX0=', // uptoken是上传凭证，由其他程序生成
+            uptoken: 'iUTbwTRLotclpFa8kHoeSUvgxgvH1WL2-ROdbY7B:P0h-ozrPRXIdLQ2apQseuMD_hh8=:eyJzY29wZSI6InRlc3R2aWRlbzIiLCJkZWFkbGluZSI6MTQ5MjY4MzcxOH0=', // uptoken是上传凭证，由其他程序生成
             get_new_uptoken: false,             // 设置上传文件的时候是否每次都重新获取新的uptoken
             unique_names: false,              // 默认false，key为文件名。若开启该选项，JS-SDK会为每个文件自动生成key（文件名）
             save_key: false,                  // 默认false。若在服务端生成uptoken的上传策略中指定了sava_key，则开启，SDK在前端将不对key进行任何处理
@@ -28,11 +28,11 @@ export default {
             domain: 'http://oodr8juo6.bkt.clouddn.com/', // bucket domain eg:http://qiniu-plupload.qiniudn.com/
             container: 'video_container',             // 上传区域DOM ID，默认是browser_button的父元素
             max_file_size: '500mb',             // 最大文件体积限制
-            flash_swf_url: '/plupload/Moxie.swf',  // 引入flash，相对路径
-            max_retries: 3,                     // 上传失败最大重试次数
+            // flash_swf_url: '/plupload/Moxie.swf',  // 引入flash，相对路径
             dragdrop: true,                     // 开启可拖曳上传
             drop_element: 'video_container',          // 拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
             chunk_size: '4mb',                  // 分块上传时，每块的体积
+            max_retries: 3,                     // 上传失败最大重试次数
             auto_start: true,                   // 选择文件后自动上传，若关闭需要自己绑定事件触发上传
             // x_vars : {
             //    查看自定义变量
@@ -57,6 +57,15 @@ export default {
                 'BeforeUpload': function (up, file) {
                     // 每个文件上传前，处理相关的事情
                     console.log('BeforeUpload')
+                },
+                'ChunkUploaded': function (up, file, info) {
+                    console.log('ChunkUploaded')
+                    console.log('up =')
+                    console.log(up)
+                    console.log('file =')
+                    console.log(file)
+                    console.log('info =')
+                    console.log(info)
                 },
                 'UploadProgress': function (up, file) {
                     // 每个文件上传时，处理相关的事情
