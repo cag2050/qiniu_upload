@@ -7,7 +7,11 @@
 要修改：qiniu.conf.ACCESS_KEY、qiniu.conf.SECRET_KEY、bucket。  
 2. src/components/Upload.vue 文件。  
 要修改 var uploader = Qiniu.uploader({ 里的：  
-uptoken（运行 create_uptoken.js，打印出的字符串。如果提示过期，重新获取并更改）、bucket_name、domain。  
+uptoken（运行 create_uptoken.js，打印出的字符串。如果提示过期，重新获取并更改）、bucket_name、domain。
+
+项目说明：  
+1. src/components/Upload.vue 文件里引入：require('qiniu-js/dist/qiniu.js')  
+2. 项目目录下index.html 引入plupload：<script src="http://cdn.staticfile.org/plupload/2.1.9/plupload.full.min.js"></script>  
 
 ## Build Setup
 
