@@ -14,6 +14,7 @@
 
 <script>
 require('qiniu-js/dist/qiniu.js')
+import config from '../config/config'
 
 export default {
     data () {
@@ -26,19 +27,19 @@ export default {
         }
     },
     mounted () {
-        console.log(111)
+        console.log('mounted')
         let Qiniu = global.Qiniu
         let plupload = window.plupload
         let _this = this
         this.uploader = Qiniu.uploader({
             runtimes: 'html5,flash,html4',      // 上传模式，依次退化
             browse_button: 'pickfiles',         // 上传选择的点选按钮，必需
-            uptoken: 'iUTbwTRLotclpFa8kHoeSUvgxgvH1WL2-ROdbY7B:Zh_7_OdEyUQBQkMouDeO2v4XvoA=:eyJzY29wZSI6InRlc3R2aWRlbzIiLCJkZWFkbGluZSI6MTQ5Mjc3MDE3Nn0=', // uptoken是上传凭证，由其他程序生成
+            uptoken: 'iUTbwTRLotclpFa8kHoeSUvgxgvH1WL2-ROdbY7B:jive62vnYKGVB9NBzZRm5C32NtA=:eyJzY29wZSI6InRlc3R2aWRlbzIiLCJkZWFkbGluZSI6MTQ5Mjc3NjU1OX0=', // uptoken是上传凭证，由其他程序生成
             get_new_uptoken: false,             // 设置上传文件的时候是否每次都重新获取新的uptoken
             unique_names: false,              // 默认false，key为文件名。若开启该选项，JS-SDK会为每个文件自动生成key（文件名）
             save_key: false,                  // 默认false。若在服务端生成uptoken的上传策略中指定了sava_key，则开启，SDK在前端将不对key进行任何处理
-            bucket_name: 'testvideo2',
-            domain: 'http://oodr8juo6.bkt.clouddn.com/', // bucket domain eg:http://qiniu-plupload.qiniudn.com/
+            bucket_name: config.bucket_name,
+            domain: config.domain, // bucket domain eg:http://qiniu-plupload.qiniudn.com/
             container: 'video_container',             // 上传区域DOM ID，默认是browser_button的父元素
             max_file_size: '500mb',             // 最大文件体积限制
             // flash_swf_url: '/plupload/Moxie.swf',  // 引入flash，相对路径

@@ -1,6 +1,3 @@
-/**
- * Created by yixia on 4/17/17.
- */
 var qiniu = require("qiniu");
 //需要填写你的 Access Key 和 Secret Key
 qiniu.conf.ACCESS_KEY = 'iUTbwTRLotclpFa8kHoeSUvgxgvH1WL2-ROdbY7B';
