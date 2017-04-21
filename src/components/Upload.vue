@@ -1,6 +1,14 @@
 <template>
 <div id="video_container">
     <button id="pickfiles">上传视频</button>
+    <div>
+        <div class="upload_info">
+            <b>共{{ fileSize }}MB | 已上传{{ fileLoaded }} | 上传速度{{ fileSpeed }}/s</b>
+        </div>
+        <div><b>上传进度：{{ filePercent }}%</b></div>
+        <button @click='pauseUpload'>暂停上传</button>
+        <button @click='continueUpload'>继续上传</button>
+    </div>
 </div>
 </template>
 
@@ -10,17 +18,22 @@ require('qiniu-js/dist/qiniu.js')
 export default {
     data () {
         return {
-
+            fileSize: '',
+            fileLoaded: '',
+            fileSpeed: '',
+            filePercent: '',
+            uploader: null
         }
     },
     mounted () {
         console.log(111)
         let Qiniu = global.Qiniu
         let plupload = window.plupload
-        var uploader = Qiniu.uploader({
+        let _this = this
+        this.uploader = Qiniu.uploader({
             runtimes: 'html5,flash,html4',      // 上传模式，依次退化
             browse_button: 'pickfiles',         // 上传选择的点选按钮，必需
-            uptoken: 'iUTbwTRLotclpFa8kHoeSUvgxgvH1WL2-ROdbY7B:P0h-ozrPRXIdLQ2apQseuMD_hh8=:eyJzY29wZSI6InRlc3R2aWRlbzIiLCJkZWFkbGluZSI6MTQ5MjY4MzcxOH0=', // uptoken是上传凭证，由其他程序生成
+            uptoken: 'iUTbwTRLotclpFa8kHoeSUvgxgvH1WL2-ROdbY7B:Zh_7_OdEyUQBQkMouDeO2v4XvoA=:eyJzY29wZSI6InRlc3R2aWRlbzIiLCJkZWFkbGluZSI6MTQ5Mjc3MDE3Nn0=', // uptoken是上传凭证，由其他程序生成
             get_new_uptoken: false,             // 设置上传文件的时候是否每次都重新获取新的uptoken
             unique_names: false,              // 默认false，key为文件名。若开启该选项，JS-SDK会为每个文件自动生成key（文件名）
             save_key: false,                  // 默认false。若在服务端生成uptoken的上传策略中指定了sava_key，则开启，SDK在前端将不对key进行任何处理
@@ -52,6 +65,9 @@ export default {
                     plupload.each(files, function (file) {
                         // 文件添加进队列后，处理相关的事情
                         console.log('FilesAdded')
+                        plupload.each(files, function (file) {
+                            _this.fileSize = _this.toDecimal(file.size)
+                        })
                     })
                 },
                 'BeforeUpload': function (up, file) {
@@ -60,19 +76,20 @@ export default {
                 },
                 'ChunkUploaded': function (up, file, info) {
                     console.log('ChunkUploaded')
-                    console.log('up =')
-                    console.log(up)
-                    console.log('file =')
-                    console.log(file)
-                    console.log('info =')
-                    console.log(info)
                 },
                 'UploadProgress': function (up, file) {
                     // 每个文件上传时，处理相关的事情
+                    // console.log('_this.filePause =')
+                    // console.log(_this.filePause)
                     console.log('UploadProgress')
+                    _this.filePercent = parseInt(file.percent)
+                    _this.fileLoaded = plupload.formatSize(file.loaded).toUpperCase()
+                    _this.fileSpeed = plupload.formatSize(file.speed).toUpperCase()
+                    console.log('_this.filePercent =')
+                    console.log(_this.filePercent)
                 },
                 'FileUploaded': function (up, file, info) {
-                    // console.log(info);
+                    console.log('FileUploaded')
                     // 每个文件上传成功后，处理相关的事情
                     // 其中info是文件上传成功后，服务端返回的json，形式如：
                     // {
@@ -86,8 +103,9 @@ export default {
                 },
                 'Error': function (up, err, errTip) {
                     // 上传出错时，处理相关的事情
-                    console.log('Error')
+                    console.log('Error =')
                     console.log(err)
+                    console.log('errTip =')
                     console.log(errTip)
                 },
                 'UploadComplete': function () {
@@ -103,13 +121,36 @@ export default {
                 // }
             }
         })
-        if (uploader) {
-        }
             // domain为七牛空间对应的域名，选择某个空间后，可通过 空间设置->基本设置->域名设置 查看获取
             // uploader为一个plupload对象，继承了所有plupload的方法
     },
     methods: {
-
+        toDecimal (size) {
+            size = size / 1024 / 1024
+            var f = parseFloat(size)
+            if (isNaN(f)) {
+                return
+            }
+            f = Math.round(size * 10) / 10
+            var s = f.toString()
+            var rs = s.indexOf('.')
+            if (rs < 0) {
+                rs = s.length
+                s += '.'
+            }
+            while (s.length <= rs + 1) {
+                s += '0'
+            }
+            return s
+        },
+        pauseUpload () {
+            console.log('pauseUpload')
+            this.uploader.stop()
+        },
+        continueUpload () {
+            console.log('continueUpload')
+            this.uploader.start()
+        }
     }
 }
 </script>
