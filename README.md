@@ -4,10 +4,11 @@
 
 需要修改的地方：    
 1. 项目目录下 create_uptoken.js 文件。    
-要修改：qiniu.conf.ACCESS_KEY、qiniu.conf.SECRET_KEY、bucket。  
-2. src/components/Upload.vue 文件。  
-要修改 var uploader = Qiniu.uploader({ 里的：  
-uptoken（运行 create_uptoken.js，打印出的字符串。如果提示过期，重新获取并更改）、bucket_name、domain。
+要修改：qiniu.conf.ACCESS_KEY、qiniu.conf.SECRET_KEY、bucket_name。
+2. 修改 src/config/config.js 中的 bucket_name,domain。  
+3. src/components/Upload.vue 文件。  
+要修改 var uploader = Qiniu.uploader({ 里的：  
+uptoken（运行 create_uptoken.js，打印出的字符串。如果提示过期，重新获取并更改）。
 
 项目说明：  
 1. src/components/Upload.vue 文件里引入：require('qiniu-js/dist/qiniu.js')  
