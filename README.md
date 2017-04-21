@@ -12,6 +12,7 @@ uptoken（运行 create_uptoken.js，打印出的字符串。如果提示过期�
 项目说明：  
 1. src/components/Upload.vue 文件里引入：require('qiniu-js/dist/qiniu.js')  
 2. 项目目录下index.html 引入plupload：<script src="http://cdn.staticfile.org/plupload/2.1.9/plupload.full.min.js"></script>  
+3. 断点续传的含义：配置项 chunk_size 值为0时表示不使用分片上传功能（分片上传功能实现了断点续传）  
 
 ## Build Setup
 
