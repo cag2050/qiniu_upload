@@ -66,9 +66,7 @@ export default {
                     plupload.each(files, function (file) {
                         // 文件添加进队列后，处理相关的事情
                         console.log('FilesAdded')
-                        plupload.each(files, function (file) {
-                            _this.fileSize = _this.toDecimal(file.size)
-                        })
+                        _this.fileSize = _this.toDecimal(file.size)
                     })
                 },
                 'BeforeUpload': function (up, file) {
