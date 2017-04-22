@@ -13,7 +13,6 @@
 
 <script>
 require('qiniu-js/dist/qiniu.js')
-import config from '../config/config'
 
 export default {
     data () {
@@ -33,6 +32,14 @@ export default {
         browse_button: {
             type: String,
             required: true
+        },
+        domain: {
+            type: String,
+            required: true
+        },
+        bucket_name: {
+            type: String,
+            required: true
         }
     },
     mounted () {
@@ -47,8 +54,8 @@ export default {
             get_new_uptoken: false,             // 设置上传文件的时候是否每次都重新获取新的uptoken
             unique_names: false,              // 默认false，key为文件名。若开启该选项，JS-SDK会为每个文件自动生成key（文件名）
             save_key: false,                  // 默认false。若在服务端生成uptoken的上传策略中指定了sava_key，则开启，SDK在前端将不对key进行任何处理
-            bucket_name: config.bucket_name,
-            domain: config.domain, // bucket domain eg:http://qiniu-plupload.qiniudn.com/
+            bucket_name: _this.bucket_name,
+            domain: _this.domain, // bucket domain eg:http://qiniu-plupload.qiniudn.com/
             container: 'video_container',             // 上传区域DOM ID，默认是browser_button的父元素
             max_file_size: '500mb',             // 最大文件体积限制
             // flash_swf_url: '/plupload/Moxie.swf',  // 引入flash，相对路径
