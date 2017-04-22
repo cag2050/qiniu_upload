@@ -17,7 +17,7 @@ import Upload from './Upload'
 export default {
     data () {
         return {
-            browse_button1: '',
+            browse_button1: 'pickfiles1',
             browse_button2: 'pickfiles2',
             uptoken1: 'iUTbwTRLotclpFa8kHoeSUvgxgvH1WL2-ROdbY7B:WR_3F1eT-QeTSHV1yp6X-xxzH4w=:eyJzY29wZSI6InRlc3R2aWRlbzIiLCJkZWFkbGluZSI6MTQ5Mjg1NTA3Mn0=',
             uptoken2: 'iUTbwTRLotclpFa8kHoeSUvgxgvH1WL2-ROdbY7B:WR_3F1eT-QeTSHV1yp6X-xxzH4w=:eyJzY29wZSI6InRlc3R2aWRlbzIiLCJkZWFkbGluZSI6MTQ5Mjg1NTA3Mn0='
