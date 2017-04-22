@@ -1,6 +1,5 @@
 <template>
 <div id="video_container">
-    <button id="pickfiles">上传视频</button>
     <div>
         <div class="upload_info">
             <b>共{{ fileSize }}MB | 已上传{{ fileLoaded }} | 上传速度{{ fileSpeed }}/s</b>
@@ -26,6 +25,16 @@ export default {
             uploader: null
         }
     },
+    props: {
+        uptoken: {
+            type: String,
+            required: true
+        },
+        browse_button: {
+            type: String,
+            required: true
+        }
+    },
     mounted () {
         console.log('mounted')
         let Qiniu = global.Qiniu
@@ -33,8 +42,8 @@ export default {
         let _this = this
         this.uploader = Qiniu.uploader({
             runtimes: 'html5,flash,html4',      // 上传模式，依次退化
-            browse_button: 'pickfiles',         // 上传选择的点选按钮，必需
-            uptoken: 'iUTbwTRLotclpFa8kHoeSUvgxgvH1WL2-ROdbY7B:jive62vnYKGVB9NBzZRm5C32NtA=:eyJzY29wZSI6InRlc3R2aWRlbzIiLCJkZWFkbGluZSI6MTQ5Mjc3NjU1OX0=', // uptoken是上传凭证，由其他程序生成
+            browse_button: _this.browse_button,         // 上传选择的点选按钮，必需
+            uptoken: _this.uptoken, // uptoken是上传凭证，由其他程序生成
             get_new_uptoken: false,             // 设置上传文件的时候是否每次都重新获取新的uptoken
             unique_names: false,              // 默认false，key为文件名。若开启该选项，JS-SDK会为每个文件自动生成key（文件名）
             save_key: false,                  // 默认false。若在服务端生成uptoken的上传策略中指定了sava_key，则开启，SDK在前端将不对key进行任何处理
