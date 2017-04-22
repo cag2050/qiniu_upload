@@ -8,8 +8,8 @@
 2. 修改 src/config/config.js 中的 bucket_name、domain、uptoken（运行 create_uptoken.js，打印出的字符串。如果提示过期，重新获取并更改）。  
 
 项目说明：  
-1. src/components/Upload.vue 文件里引入：require('qiniu-js/dist/qiniu.js')  
-2. 项目目录下index.html 引入plupload：<script src="http://cdn.staticfile.org/plupload/2.1.9/plupload.full.min.js"></script>  
+1. src/components/Upload.vue 文件里引入了 node_modules 中安装的 qiniu-js：require('qiniu-js/dist/qiniu.js')  
+2. 项目目录下 index.html 引入了 plupload：<script src="http://cdn.staticfile.org/plupload/2.1.9/plupload.full.min.js"></script>  
 3. 断点续传的含义：配置项 chunk_size 值为0时表示不使用分片上传功能（分片上传功能实现了断点续传）  
 4. src/components/MultiUpload.vue 是包含子组件 src/components/Upload.vue 的父组件，可以创建多个Upload。如果需要，可以在 Upload.vue 的 props 中再添加属性。
 
