@@ -3,8 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueResource from 'vue-resource'
 
-// require("qiniu-js/dist/qiniu.js");
+Vue.use(VueResource)
 
 Vue.config.productionTip = false
 
