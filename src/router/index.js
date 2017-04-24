@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import MultiUpload from '../components/MultiUpload'
-import FormData from '../components/FormData'
+import MultiFormData from '../components/MultiFormData'
 
 Vue.use(Router)
 
@@ -14,9 +14,9 @@ export default new Router({
           component: MultiUpload
       },
       {
-          path: '/formdata',
-          name: 'FormData',
-          component: FormData
+          path: '/multiformdata',
+          name: 'MultiFormData',
+          component: MultiFormData
       },
       {
           path: '/hello',
