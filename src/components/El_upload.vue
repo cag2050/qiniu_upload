@@ -32,8 +32,6 @@ export default {
             result: ''
         }
     },
-    mounted () {
-    },
     methods: {
         beforeUpload (file) {
             this.fileName = file.name
