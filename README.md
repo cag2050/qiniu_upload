@@ -16,7 +16,8 @@
 6. src/components/MultiFormData.vue 是包含子组件 src/components/FormData.vue 的父组件，可以创建多个FormData，FormData是使用[formdata表单](https://developer.qiniu.com/kodo/manual/1272/form-upload)的形式上传。如果需要，可以在 FormData.vue 的 props 中再添加属性。
 7. 七牛使用 Formdata 方式上传，缺点：  
    1). IE 8/9 不支持。  
-   2). 无法使用分片上传功能（分片上传功能实现了断点续传、暂停和继续）。  
+   2). 无法使用分片上传功能（分片上传功能实现了断点续传、暂停和继续）。
+   FormData.vue 和 El_upload.vue 都是使用了 Formdata 方式。
    不考虑兼容性的情况下，如手机端，可以直接使用 Formdata 结合七牛表单上传的方式上传文件。  
    
 ## Build Setup
