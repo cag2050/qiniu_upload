@@ -44,6 +44,7 @@ export default {
             if (file) {
                 this.fileName = file.name
                 let formData = new FormData(document.getElementById(this.formId))
+                formData.append('key', file.name)
                 this.$http.post('http://upload.qiniu.com/', formData, {
                     progress (event) {
                         _this.loaded = (event.loaded / 1000000).toFixed(2)

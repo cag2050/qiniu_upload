@@ -129,7 +129,7 @@ export default {
                 }
                 // 'Key': function (up, file) {
                     // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
-                    // 该配置必须要在unique_names: false，save_key: false时才生效
+                    // 当save_key和unique_names设为false时，该方法将被调用
                     // var key = "";
                     // do something with key here
                     // return key

@@ -22,7 +22,8 @@ export default {
     data () {
         return {
             form: {
-                token: config.uptoken
+                token: config.uptoken,
+                key: null
             },
             showUploadList: false,
             fileName: '',
@@ -35,6 +36,7 @@ export default {
     methods: {
         beforeUpload (file) {
             this.fileName = file.name
+            this.form.key = file.name
         },
         handleProgress (event, file, fileList) {
             this.loaded = (event.loaded / 1000000).toFixed(2)
