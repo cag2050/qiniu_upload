@@ -8,26 +8,27 @@ import El_upload from '../components/El_upload'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-      {
-          path: '/el_upload',
-          name: 'El_upload',
-          component: El_upload
-      },
-      {
-          path: '/',
-          name: 'MultiUpload',
-          component: MultiUpload
-      },
-      {
-          path: '/multiformdata',
-          name: 'MultiFormData',
-          component: MultiFormData
-      },
-      {
-          path: '/hello',
-          name: 'Hello',
-          component: Hello
-      }
-  ]
+    mode: 'history',
+    routes: [
+        {
+            path: '/el_upload',
+            name: 'El_upload',
+            component: El_upload
+        },
+        {
+            path: '/',
+            name: 'MultiUpload',
+            component: MultiUpload
+        },
+        {
+            path: '/multiformdata',
+            name: 'MultiFormData',
+            component: MultiFormData
+        },
+        {
+            path: '/hello',
+            name: 'Hello',
+            component: Hello
+        }
+    ]
 })
