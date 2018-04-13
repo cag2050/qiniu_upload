@@ -12,7 +12,7 @@
 </template>
 
 <script>
-require('qiniu-js/dist/qiniu.js')
+require('qiniu-js/dist/qiniu.min.js')
 
 export default {
     data () {
