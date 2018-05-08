@@ -57,7 +57,7 @@ export default {
             bucket_name: _this.bucket_name,
             domain: _this.domain, // bucket domain eg:http://qiniu-plupload.qiniudn.com/
             container: 'video_container',             // 上传区域DOM ID，默认是browser_button的父元素
-            max_file_size: '500mb',             // 最大文件体积限制
+            max_file_size: '2000mb',             // 最大文件体积限制
             // flash_swf_url: '/plupload/Moxie.swf',  // 引入flash，相对路径
             dragdrop: true,                     // 开启可拖曳上传
             drop_element: 'video_container',          // 拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
